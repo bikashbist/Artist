@@ -1,3 +1,5 @@
+@use 'inner';
+@use 'artistProfile';
 $primary-color: #3777a0;
 
 
@@ -5,58 +7,97 @@ body {
     font-family: 'Avant Grade', 'Poppins', sans-serif;
 }
 
+%header-logo {
+    width: 200px;
+    object-fit: cover;
+
+}
+
+%header-nav-link {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Avant Grade', 'Poppins', sans-serif;
+}
+
+%header-crate-account {
+    padding: 6px 20px !important;
+    background-color: #0d6efd;
+    display: inline-block;
+}
+
+%header-title {
+    font-size: 80px;
+    color: #fff;
+    letter-spacing: -4px;
+    font-weight: 900;
+    font-family: "Avant Grade", "Poppins", sans-serif;
+}
+
+%header-list-padding {
+    padding-right: 30px;
+}
+
 .header {
+
+
     background-image: url('../slider.jpg');
     height: 562px;
     object-fit: cover;
 
+    &.header__inner {
+
+        background-image: url(../image/inner.jpeg);
+        height: 376px;
+        -o-object-fit: cover;
+        object-fit: cover;
+
+    }
+
     &__logo {
+
         img {
-            width: 200px;
-            object-fit: cover;
+            @extend %header-logo;
         }
 
     }
 
     a {
+
         &.nav-link {
-            font-size: 16px;
-            color: #fff;
-            font-weight: 600;
-            font-family: 'Avant Grade', 'Poppins', sans-serif;
+            @extend %header-nav-link;
         }
 
         &.create-account {
-            padding: 6px 20px !important;
-            background-color: #0d6efd;
-            /* border-radius: 10px; */
-            display: inline-block;
+            @extend %header-crate-account;
         }
 
         &.active {
             background-color: $primary-color;
             color: #fff !important;
         }
+
     }
 
     li {
+
         &.nav-item {
-            padding-right: 30px;
+            @extend %header-list-padding;
         }
+
     }
 
     h1 {
-        font-size: 80px;
-        color: #fff;
-        letter-spacing: -4px;
-        font-weight: 900;
-        font-family: "Avant Grade", "Poppins", sans-serif;
+
+        @extend %header-title;
+
     }
 
 
 
 
     .button {
+
         border: 2px solid $primary-color;
         width: 160px;
         padding: 14px 0px;
@@ -65,13 +106,17 @@ body {
         background-size: 200% 100%;
         background-position: right bottom;
         transition: all 0.5s ease-out;
+
     }
 
     .button:hover {
+
         background-position: left bottom;
+
     }
 
     .text {
+
         text-align: center;
         font-size: 16px;
         line-height: 30px;
@@ -79,14 +124,62 @@ body {
         transition: all .6s ease-out;
         display: block;
         font-weight: 600;
+
     }
 
     .text:hover {
+
         color: white;
+
+    }
+
+}
+
+.art__header {
+    height: 400px;
+
+    &__logo {
+
+        img {
+            @extend %header-logo;
+        }
+
+    }
+
+    a {
+
+        &.nav-link {
+            @extend %header-nav-link;
+        }
+
+        &.create-account {
+            @extend %header-crate-account;
+        }
+
+        &.active {
+            background-color: $primary-color;
+            color: #fff !important;
+        }
+
+    }
+
+    li {
+
+        &.nav-item {
+            @extend %header-list-padding;
+        }
+
+    }
+
+    h1 {
+
+        @extend %header-title;
+
     }
 }
 
 .signUp {
+
     &__title {
         h2 {
             font-size: 44px;
@@ -126,9 +219,11 @@ body {
             }
         }
     }
+
 }
 
 .search {
+
     .slect {
         width: 200px;
         margin-right: 10px;
@@ -198,7 +293,7 @@ body {
             text-shadow: 2px 2px #0d0d0d;
             font-weight: 800;
             font-size: 15px;
-        
+
         }
     }
 
@@ -215,7 +310,8 @@ body {
         -webkit-filter: grayscale(100%);
         /* Safari 6.0 - 9.0 */
         filter: grayscale(100%);
-        &:hover{
+
+        &:hover {
             -webkit-filter: grayscale(0%);
             /* Safari 6.0 - 9.0 */
             filter: grayscale(0%);
@@ -356,4 +452,89 @@ body {
         margin-bottom: 0px;
         font-size: 15px;
     }
+}
+
+.gallery__part {
+
+    .container.gallery-container {
+        background-color: #fff;
+        color: #35373a;
+
+    }
+
+    .gallery-container h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-family: 'Droid Sans', sans-serif;
+        font-weight: bold;
+    }
+
+    .gallery-container p.page-description {
+        text-align: center;
+        margin: 25px auto;
+        font-size: 18px;
+        color: #999;
+    }
+
+    .tz-gallery {
+        padding: 40px;
+    }
+
+    /* Override bootstrap column paddings */
+    .tz-gallery .row>div {
+        padding: 2px;
+    }
+
+    .tz-gallery .lightbox img {
+        width: 100%;
+        border-radius: 0;
+        position: relative;
+    }
+
+    a.lightbox {
+        display: hidden;
+        position: relative;
+    }
+
+    // .tz-gallery .lightbox:before {
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     margin-top: -13px;
+    //     margin-left: -13px;
+    //     opacity: 0;
+    //     color: #fff;
+    //     font-size: 26px;
+    //     font-family: 'Glyphicons Halflings';
+    //     content: '\e003';
+    //     pointer-events: none;
+    //     z-index: 9000;
+    //     transition: 0.4s;
+    // }
+
+
+    // .tz-gallery .lightbox:after {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     opacity: 0;
+    //     background-color: rgba(46, 132, 206, 0.7);
+    //     content: '';
+    //     transition: 0.4s;
+    // }
+
+    .tz-gallery .lightbox:hover:after,
+    .tz-gallery .lightbox:hover:before {
+        opacity: 1;
+    }
+
+    .baguetteBox-button {
+        background-color: transparent !important;
+    }
+
+
+
+
 }
